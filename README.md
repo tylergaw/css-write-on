@@ -1,0 +1,3 @@
+# CSS Write-on Text Effect
+
+What I'm doing here is using a -webkit-mask-image sprite that contains a frame for each step in the "writing". The text is in the DOM but the mask starts out at 100% transparent so nothing is shown. A CSS animation is played that changes the mask-image-position to each frame. The animation has percentages in close enough intervals that the interpolation is not seen, so we snap to each frame.
