@@ -32,6 +32,7 @@
             </div>
             <div id="controls">
                 <button id="play-btn">Play*</button>
+                <button id="loop-btn" class="hide">Loop</button>
 
                 <em>(*Due to the use of -webkit-mask-image, this demo will only work in Webkit browsers)</em>
             </div>
@@ -39,7 +40,7 @@
         <footer role="contentinfo">
             <p>
                 What I'm doing here is using a -webkit-mask-image sprite that contains a frame for each step in the "writing". The text is in the DOM but the mask starts out at 100% transparent so nothing is shown. A CSS animation is played that changes the mask-image-position to each frame. The animation has percentages in close enough intervals that the interpolation is not seen, so we snap to each frame.
-                <br><a href="https://github.com/tylergaw.com">Source on Github</a>
+                <br><a href="https://github.com/tylergaw/css-write-on">Source on Github</a>
                 <br><a href="http://tylergaw.com/projects">More crud like this</a>
             </p>
         </footer>
@@ -51,22 +52,26 @@
             // 2. After the animation plays one time the button text changes and the description is displayed fully.
             (function () {
                 var playBtn = document.getElementById('play-btn'),
+                    loopBtn = document.getElementById('loop-btn'),
                     el = document.getElementById('write-on'),
-                    playedOnce = false;
+                    playedOnce = false,
+                    playClass = 'play',
+                    loopClass = 'loop';
                 
                 playBtn.onclick = function () {
-                    var className = 'play';
-                        hasClass = el.classList.contains(className);
+                    var hasClass = el.classList.contains(playClass);
+                    
+                    el.classList.remove(loopClass);
                     
                     // classList is really great:
                     // https://developer.mozilla.org/en/DOM/element.classList
                     if (hasClass) {
-                        el.classList.remove(className);
+                        el.classList.remove(playClass);
                         setTimeout(function () {
-                            el.classList.add(className);
+                            el.classList.add(playClass);
                         }, 200);
                     } else {
-                        el.classList.add(className);
+                        el.classList.add(playClass);
                     }
                     
                     if (!playedOnce) {
@@ -75,11 +80,22 @@
                         el.addEventListener('webkitAnimationEnd', function () {
                             playBtn.innerHTML = 'Replay';
                             playedOnce = true;
-                            
+                            loopBtn.classList.remove('hide');
                             document.querySelector('p').classList.add('show');
                         });
                     }
+                };
+                
+                loopBtn.onclick = function () {
+                    el.classList.remove(playClass);
                     
+                    if (!el.classList.contains(loopClass)) {
+                        setTimeout(function () {
+                            el.classList.add(loopClass);
+                        }, 200);
+                    } else {
+                        el.classList.remove(loopClass);
+                    }
                 };
             }());
         </script>

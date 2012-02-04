@@ -18,6 +18,11 @@
     -webkit-animation-fill-mode: both;
 }
 
+#write-on.loop {
+    -webkit-animation: write-on 2.1s infinite;
+    -webkit-animation-direction: alternate;
+}
+
 h1 {
     font-family: 'reklame-script';
     font-size: 10em;
@@ -107,7 +112,7 @@ body > div {
     width: 500px;
 }
 
-#play-btn {
+button {
     background-color: #e2e2e2;
     border: 0px;
     border-bottom: 1px solid #525252;
@@ -121,8 +126,12 @@ body > div {
     padding: 0.2em 1.5em;
 }
 
-#play-btn:hover {
+button:hover {
     background-color: #fff;
+}
+
+button.hide {
+    display: none;
 }
 
 em {
