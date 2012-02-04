@@ -5,6 +5,7 @@
         <title>CSS Write-on text effect</title>
         <meta name="description" content="Tyler Gaw is a Web Designer in Brooklyn, New York">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="general-styles.css">
         <link rel="stylesheet" href="write-on.css">
       
         <script type="text/javascript">
@@ -39,7 +40,7 @@
         </div>
         <footer role="contentinfo">
             <p>
-                What I'm doing here is using a -webkit-mask-image sprite that contains a frame for each step in the "writing". The text is in the DOM but the mask starts out at 100% transparent so nothing is shown. A CSS animation is played that changes the mask-image-position to each frame. The animation has percentages in close enough intervals that the interpolation is not seen, so we snap to each frame.
+                I'm using -webkit-mask-image with a <a href="https://github.com/tylergaw/css-write-on/blob/master/images/mask.png">sprite</a> that contains a frame for each partial path of the text. The text, "Write-on!" is in an h1 element but the mask applied to its parent element starts out at 100% transparent so nothing is shown below it. A CSS animation is applied to the containing element. Each step of the animation changes the -webkit-mask-image-position to advance to the next frame. The animation step percentages are placed close enough together that the interpolation between one frame and the next is not seen.
                 <br><a href="https://github.com/tylergaw/css-write-on">Source on Github</a>
                 <br><a href="http://tylergaw.com/projects">More crud like this</a>
             </p>
