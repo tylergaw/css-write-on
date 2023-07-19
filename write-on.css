@@ -6,7 +6,8 @@
     margin: 1em auto 0 auto;
     -webkit-mask-repeat: no-repeat;
     -webkit-mask-position: 0 0;
-    -webkit-mask-image: url(images/mask.png);
+    -webkit-mask-image: url("./images/mask.png");
+	mask-image: url("./images/mask.png");
     width: 490px;
 }
 
